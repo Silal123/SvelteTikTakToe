@@ -80,17 +80,22 @@
     }
 </script>
 
+<div class="filed fixed flex w-full h-full flex-col items-center justify-center">
+    <div class="info mb-4">
+        <h1 class="text-center text-4xl pb-5 font-semibold text-white animation-tik-title">Tik Tak Toe</h1>
+        <h2 class="text-center text-lg font-semibold text-white">{desc}</h2>
+    </div>
+    <div class="grid grid-cols-3 gap-3">
+        {#each game as value, index}
+        <button id="{index}" class:bg-gray-300={value === -1} class:bg-blue-500={value === 0} class:bg-green-500={value === 1} class:bg-blue-900={value === 2} class:text-white={value === 2 || value === 3} class:bg-green-900={value === 3} class="{!gameEnd ? value !== -1 ? "animate-selected-button" : "animate-button" : "animate-selected-button"} max-h-20 h-16 max-w-20 w-16 rounded-xl" onclick="{() => click(index)}">{value === -1 ? "" : value === 0 || value === 1 ? symbols[value] : value === 2 || value === 3 ? symbols[value - 2] : "e"}</button>
+        {/each}
+    </div>
+    <div class="reset mb-5">
+        <button onclick="{resetGame}" class="bg-orange-500 p-3 m-3 rounded-xl animate-reset text-white">Reset</button>
+    </div>
+</div>
+
 <style>
-    .button-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-    }
-
-    :global(body) {
-        @apply bg-zinc-900;
-    }
-
     .animate-button:hover {
         animation: button 1s;
     }
@@ -143,18 +148,3 @@
         }
     }
 </style>
-
-<div class="filed fixed flex w-full h-full flex-col items-center justify-center">
-    <div class="info mb-4">
-        <h1 class="text-center text-4xl pb-5 font-semibold text-white animation-tik-title">Tik Tak Toe</h1>
-        <h2 class="text-center text-lg font-semibold text-white">{desc}</h2>
-    </div>
-    <div class="grid grid-cols-3 gap-3">
-        {#each game as value, index}
-        <button id="{index}" class="{value === -1 ? "bg-gray-300" : value === 0 ? "bg-blue-500" : value === 1 ? "bg-green-500": value === 2 ? "bg-blue-900 text-white" : value === 3 ? "bg-green-900 text-white": "bg-red-500"} {!gameEnd ? value !== -1 ? "animate-selected-button" : "animate-button" : "animate-selected-button"} max-h-20 h-16 max-w-20 w-16 rounded-xl" onclick="{() => click(index)}">{value === -1 ? "" : value === 0 || value === 1 ? symbols[value] : value === 2 || value === 3 ? symbols[value - 2] : "e"}</button>
-        {/each}
-    </div>
-    <div class="reset mb-5">
-        <button onclick="{resetGame}" class="bg-orange-500 p-3 m-3 rounded-xl animate-reset text-white">Reset</button>
-    </div>
-</div>
