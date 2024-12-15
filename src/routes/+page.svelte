@@ -100,6 +100,32 @@
         transform: scale(1.1);
     }
 
+    .animation-tik-title {
+        animation: tik-title 7s infinite;
+    }
+
+    @keyframes tik-title {
+        0%, 100% {
+
+        }
+
+        20% {
+            transform: rotate(20deg);
+        }
+
+        40% {
+            transform: scale(1.3);
+        }
+
+        60% {
+            transform: rotate(-20deg);
+        }
+
+        80% {
+            transform: scale(0.9);
+        }
+    }
+
     .animate-selected-button:hover {
         transition: transform .3s ease-in-out;
         transform: scale(0.9);
@@ -120,7 +146,7 @@
 
 <div class="filed fixed flex w-full h-full flex-col items-center justify-center">
     <div class="info mb-4">
-        <h1 class="text-center text-2xl font-semibold text-white">Tik Tak Toe</h1>
+        <h1 class="text-center text-4xl pb-5 font-semibold text-white animation-tik-title">Tik Tak Toe</h1>
         <h2 class="text-center text-lg font-semibold text-white">{desc}</h2>
     </div>
     <div class="grid grid-cols-3 gap-3">
